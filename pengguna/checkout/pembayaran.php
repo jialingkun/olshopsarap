@@ -56,21 +56,6 @@ include __DIR__.'/../../database_connect.php';
 		</table>
 
 		<h4>Total Harga: <?php echo $total_semua?></h4>
-
-		
-		<form action="" method="POST">
-			
-			alamat pengiriman: <input type="text" name="alamat">
-			<br>
-			nama penerima: <input type="text" name="nama_penerima">
-			<br>
-			telepon penerima: <input type="text" name="telepon_penerima">
-			<br>
-
-
-			<input type="submit" name="submit" value="Pesan Sekarang" onclick="return confirm('Memesan barang-barang ini?')">
-			<input type="hidden" name="total_harga" value="<?php echo $total_semua ?>">
-		</form>
 		<?php 
 	} 
 	?>

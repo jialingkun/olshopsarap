@@ -19,11 +19,24 @@ include __DIR__.'/database_connect.php';
 	if(isset($_POST['submit'])) {
 		include __DIR__.'/input_cart.php';
 	}
-	?>	
-	<a href="pengguna/login/index.php">Login</a>
-	<br>
-	<a href="pengguna/registrasi/index.php">Registrasi</a>
-	<br>
+
+
+	if(isset($_SESSION["sesi_pengguna"])){
+		?>	
+		<a href="pengguna/index.php">Dashboard</a>
+		<br>
+		<a href="pengguna/checkout/index.php">Transaksi</a>
+		<br>
+		<?php 
+	}else{
+		?>	
+		<a href="pengguna/login/index.php">Login</a>
+		<br>
+		<a href="pengguna/registrasi/index.php">Registrasi</a>
+		<br>
+		<?php 
+	}
+	?>
 
 	<h1>Keranjang Belanja</h1>
 	<?php 

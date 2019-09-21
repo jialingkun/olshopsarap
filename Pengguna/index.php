@@ -14,6 +14,7 @@ include __DIR__.'/redirect_login.php';
 </head>
 <body>
 	Berhasil login PENGGUNA
+	<a href="checkout/index.php">Keranjang Belanja</a>
 	<a href="logout.php">LOGOUT</a>
 </body>
 </html>
