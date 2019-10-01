@@ -1,7 +1,6 @@
 <?php 
 include __DIR__.'/../redirect_login.php';
 include __DIR__.'/../../config.php';
-include __DIR__.'/../../database_connect.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

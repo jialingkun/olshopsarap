@@ -1,5 +1,6 @@
 <?php 
 include __DIR__.'/../../database_connect.php';
+include __DIR__.'/../../config.php';
 
 $email = $_SESSION["sesi_pengguna"]);
 date_default_timezone_set('Asia/Jakarta');
@@ -11,6 +12,7 @@ $total_harga = mysqli_real_escape_string($conn,$_POST["total_harga"]);
 
 $sql = "INSERT INTO pesanan (email, tanggal_pesanan, total_harga, alamat, nama_penerima, telepon_penerima, status) VALUES ('$email', '$tanggal_pesanan', '$total_harga', '$alamat', '$nama_penerima', '$telepon_penerima', 'menunggu pembayaran')";
 
+$berhasil = true;
 if (mysqli_query($conn, $sql)) {
 
 	$id_pesanan = mysqli_insert_id($conn);
@@ -22,9 +24,9 @@ if (mysqli_query($conn, $sql)) {
 			$sql = "INSERT INTO detail_pesanan (id_pesanan, kode_barang, jumlah, harga) VALUES ('$id_pesanan', '$kode_barang', '$jumlah', '$harga')";
 
 			if (mysqli_query($conn, $sql)) {
-				
 			} else {
 				echo "<div class='alert alert-danger'>Gagal memesan barang: " . $sql . "<br>" . mysqli_error($conn). "</div>";
+				$berhasil = false;
 			}
 
 
@@ -33,5 +35,12 @@ if (mysqli_query($conn, $sql)) {
 
 } else {
 	echo "<div class='alert alert-danger'>Gagal memesan: " . $sql . "<br>" . mysqli_error($conn). "</div>";
+	$berhasil = false;
+}
+
+
+if ($berhasil) {
+	header("Location: ".$url_website."/pengguna/checkout/nota.php?id=".$id_pesanan);
+	die();
 }
 ?>
